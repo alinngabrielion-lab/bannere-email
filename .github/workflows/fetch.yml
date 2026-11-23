@@ -1,0 +1,31 @@
+name: fetch-photos
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          mkdir -p lm/photos
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/salopeta1.jpg" "https://lenjeriamagica.ro/wp-content/uploads/2025/12/@poptelecanionut1-12-scaled.jpg" || echo FAIL salopeta1
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/salopeta2.jpg" "https://lenjeriamagica.ro/wp-content/uploads/2025/12/@poptelecanionut1-9-scaled.jpg" || echo FAIL salopeta2
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/salopeta3.jpeg" "https://lenjeriamagica.ro/wp-content/uploads/2025/12/WhatsApp-Image-2025-12-01-at-10.02.53.jpeg" || echo FAIL salopeta3
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/corset1.jpg" "https://lenjeriamagica.ro/wp-content/uploads/2026/10/c87757f8-2aed-4cc7-8bb6-8f73320f5504-e1791983565334.jpg" || echo FAIL corset1
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/corset2.jpg" "https://lenjeriamagica.ro/wp-content/uploads/2026/10/8fb943e9-0306-4dd3-a206-2ce074013a81.jpg" || echo FAIL corset2
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/colanti.jpg" "https://lenjeriamagica.ro/wp-content/uploads/2026/10/2ea3ac16-125a-4ed3-987e-98005ccd5b1c.jpg" || echo FAIL colanti
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/tanga1.jpg" "https://lenjeriamagica.ro/wp-content/uploads/2024/05/IMG_5196.jpg" || echo FAIL tanga1
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/tanga2.jpg" "https://lenjeriamagica.ro/wp-content/uploads/2024/05/IMG_5197.jpg" || echo FAIL tanga2
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/nobra.webp" "https://lenjeriamagica.ro/wp-content/uploads/2021/12/no-bra-club.webp" || echo FAIL nobra
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/nobra1.webp" "https://lenjeriamagica.ro/wp-content/uploads/2021/12/no-bra-club-1.webp" || echo FAIL nobra1
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/chiloti.webp" "https://lenjeriamagica.ro/wp-content/uploads/2021/12/chiloti-bodysculpture.webp" || echo FAIL chiloti
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/chiloti1.webp" "https://lenjeriamagica.ro/wp-content/uploads/2021/12/chiloti-bodysculpture-1.webp" || echo FAIL chiloti1
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/biker.webp" "https://lenjeriamagica.ro/wp-content/uploads/2021/12/skinny-biker.webp" || echo FAIL biker
+          curl -sSL -A "Mozilla/5.0" -o "lm/photos/biker1.webp" "https://lenjeriamagica.ro/wp-content/uploads/2021/12/skinny-biker-1.webp" || echo FAIL biker1
+          ls -la lm/photos
+          git config user.name bot
+          git config user.email bot@example.com
+          git add lm/photos
+          git commit -m photos || true
+          git push
